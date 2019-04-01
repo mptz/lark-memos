@@ -25,5 +25,9 @@ Translations should predictably impact performance.
 IV. Libraries Inhabit A Level Playing Field
 -------------------------------------------
 
-No library will be privileged by inclusion within the languge itself.
+No library will be privileged by inclusion within the language itself.
 Libraries inhabit a uniform global namespace.
+Library distribution is outside the scope of the language implementation.
+
+---
+*For an explication of these tenets, see [Lark Memo #2](https://github.com/mptz/lark-memos/blob/master/memos/memo-2.md).*
