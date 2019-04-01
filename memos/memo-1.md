@@ -13,7 +13,8 @@ II. Lark Avoids Overabstraction
 
 Lark runs on real computing hardware with specific capabilities.
 We expose these capabilities to allow high-performance programs.
-We avoid language-level abstractions without performant implementations.
+Abstractions should coincide with performant implementations.
+High degrees-of-freedom abstraction designs are delegated to libraries.
 
 III. Code Expresses Execution
 -----------------------------
