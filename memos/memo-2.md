@@ -6,9 +6,8 @@ This memo explicates the terse and--I hope--useful and pithy
 I try here to provide color, background information, and some degree of
 justification for the tenets.  There are many, many ways to design a
 programming language, with many conflicting goals; these tenets are not
-the "Right Thing", they're simply the ones I've chosen.  I should say
-the ones I've chosen *for now*, since I'm grateful to be shown a better
-path.
+the "Right Thing", they simply reflect design choices I've made.  I should
+say made *for now*, since I'm grateful to be guided onto a better path.
 
 I. Lark Targets Rigorous Programming
 ------------------------------------
@@ -35,8 +34,8 @@ contiguous arrays in main memory.
 
 __Specific Hardware Features__: Lark exposes specific hardware features,
 such as the host word size.  We don't try to exhibit identical behavior on
-all supported platforms, but we do provide alternatives (such as the *nat*
-type for arbitrary-sized natural numbers) which do abstract the language
+all supported platforms, but we do provide alternatives (such as the *Nat*
+type for arbitrary-sized natural numbers) which can abstract the language
 from its host.  We invest in making these alternatives featureful and
 performant, so they can be the default choice.
 
@@ -74,7 +73,9 @@ have many degrees of freedom.  This is best illustrated by examples:
   is your priority, you can do better than rationals, which can explode in
   magnitude with specific operations.
 
-* Sets (and hashes) XXX expand on this.
+* Sets and dictionaries have even more design considerations.  Are they
+  implemented using sorting or hashing?  Are objects iterable, and if so
+  are they iterable in sorted order?
 
 These examples share some common themes: they are useful abstractions,
 they can be implemented on top of lower-level abstractions (for example,
@@ -83,13 +84,46 @@ integers into rationals), and they all have a number of degrees of freedom
 in their implementation spaces; choosing a specific implementation will
 inevitably leave some use cases poorly served.
 
+__Lark Is Not A Scripting Language__ (expand on this).
+
 ## III. Code Expresses Execution
 
 > _We avoid features requiring knowledge of the language implementation.
 > We avoid coercions, implicit function calls, and invisible dispatch.
+> We're wary of excessively-terse code and anonymous entities.
 > Translations should predictably impact performance._
 
-## IV. Libraries Inhabit A Level Playing Field
+## IV. Lark Targets Global Scale
+
+> _Namespace allocation is decentralized and robust.
+> Change is inevitable, so primitive features support evolution.
+> Source code files are abstract.
+> Dependencies are extralinguistic.
+
+For example no include or import statements.  This allows flexibility
+of approach for managing code artifacts.
+
+## V. Compilation Is Preparation
+
+> _Lark embraces a strong phase distinction.
+> Compilation encompasses translation, specialization, and verification.
+> Compiled objects can have rich read-only structure.
+> Lark executation environments are lightweight and start quickly.
+
+Virtual execution environments should also be reentrant.  Users should
+thinking nothing of running a Lark program interactively, a developers
+should think nothing of spinning up a Lark VM from a C program.
+
+We encourage small heaps; the quickest way to GC is to exit.  We favor
+copying data over big shared heaps.
+
+We care not just about startup time of the runtime itself, but also
+about the amount of data structure initialization the application requires.
+Common, immutable data structures should reside outside heaps--it should
+be possible to serialize/deserialize & compile data structures including
+those made up of inductive types and other pointer-bearing structures.
+
+## VI. Libraries Inhabit A Level Playing Field
 
 > _No library will be privileged by inclusion within the languge itself.
 > Libraries inhabit a uniform global namespace.

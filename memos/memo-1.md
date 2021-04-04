@@ -13,7 +13,7 @@ II. Lark Avoids Overabstraction
 
 Lark runs on real computing hardware with specific capabilities.
 We expose these capabilities to allow high-performance programs.
-Abstractions should coincide with performant implementations.
+Abstractions coincide with performant implementations.
 High degrees-of-freedom abstraction designs are delegated to libraries.
 
 III. Code Expresses Execution
@@ -21,11 +21,29 @@ III. Code Expresses Execution
 
 We avoid features requiring knowledge of the language implementation.
 We avoid coercions, implicit function calls, and invisible dispatch.
+We're wary of excessively-terse code and anonymous entities.
 Translations should predictably impact performance.
 
-IV. Libraries Inhabit A Level Playing Field
+IV. Lark Targets Global Scale
+-----------------------------
+
+Namespace allocation is decentralized and robust.
+Change is inevitable, so primitive features support evolution.
+Language files are abstract.
+Dependencies and configuration are extralinguistic.
+
+V. Compilation Is Preparation
+-----------------------------
+
+Lark embraces a strong phase distinction.
+Compilation encompasses translation, specialization, and verification.
+Compiled objects can have rich read-only structure.
+Lark execution environments are lightweight and start quickly.
+
+VI. Libraries Inhabit A Level Playing Field
 -------------------------------------------
 
+We limit builtins to the transitive closure of language features.
 No library will be privileged by inclusion within the language itself.
 Libraries inhabit a uniform global namespace.
 Library distribution is outside the scope of the language implementation.
