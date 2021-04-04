@@ -98,7 +98,7 @@ __Lark Is Not A Scripting Language__ (expand on this).
 > _Namespace allocation is decentralized and robust.
 > Change is inevitable, so primitive features support evolution.
 > Source code files are abstract.
-> Dependencies are extralinguistic.
+> Dependencies are extralinguistic._
 
 For example no include or import statements.  This allows flexibility
 of approach for managing code artifacts.
@@ -108,7 +108,7 @@ of approach for managing code artifacts.
 > _Lark embraces a strong phase distinction.
 > Compilation encompasses translation, specialization, and verification.
 > Compiled objects can have rich read-only structure.
-> Lark executation environments are lightweight and start quickly.
+> Lark executation environments are lightweight and start quickly._
 
 Virtual execution environments should also be reentrant.  Users should
 thinking nothing of running a Lark program interactively, a developers
